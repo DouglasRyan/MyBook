@@ -1,81 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/style.css">
     <title>nav-demo</title>
 </head>
 <body>
-<header>
-</header>
-<main >
-    <kbd class='keyboard'>
-        A
-    </kbd>
-    <div id='yyy' class="wrap">
+    <header></header>
+    <main>
+        <div class="wrapper" id="main">
 
-    </div>
-</main>
-<script>
-    keys = {            //二维数组
-        '0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
-        '1': {0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
-        '2': {0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
-        'length': 3
-    }
-     hash = {
-        'q': 'qq.com',
-        'w': 'weibo.com',
-        'e': 'ele.me',
-        'r': 'renren.com',
-        't': 'tianya.com',
-        'y': 'youtube.com',
-        'u': 'uc.com' , 'i': 'iqiyi.com', 'o': 'opera.com', 'p': undefined, 'a': 'acfun.tv', 's': 'sohu.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
-    }
+        </div>
+    </main>
+    <script>
 
-    //取出localStorage中的zzz的hash
-     hashInLocalStorage=JSON.parse(localStorage.getItem('zzz') || 'null')
-    if (hashInLocalStorage) {
-        hash=hashInLocalStorage
-    }
-    //遍历keys，生成kbd标签
-    index =0
-    while(index<keys.length){
-        div1=document.createElement('div')
-        yyy.appendChild(div1)
-        row=keys[index]
-        index2=0
-        while(index2<row['length']){
-            kbd1=document.createElement('kbd')
-            kbd1.textContent=row[index2]
-            button1=document.createElement('button')
-            button1.textContent='编辑'
-            button1.id=row[index2]
-            button1.onclick=function(bb){
-                key = bb.target.id
-                xx = prompt('给我一个网址')//hash变更
-                localStorage.setItem('zzz', JSON.stringify(hash) )
-                hash[key] = xx
-            }
-            kbd1.appendChild(button1)
-            div1.appendChild(kbd1)
-            index2=index2+1
+        //初始化数据
+        var keys = {
+            '0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+            '1': {0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+            '2': {0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+            'length': 3
+        }
+        var hash = {
+            'q': 'qq.com', 'w': 'weibo.com'
         }
 
-        index=index+1
-    }
 
-    //监听鼠标事件
-    document.onkeypress=function(kk){
-        key=kk['key']
-        website=hash[key]
-        console.log(website)
-        //location.href='http://'+website      //当前页面打开
-        window.open('http://'+website, '_blank')
-    }
+        //生成键盘
+        console.log(keys['length'])
+        for (var index=0;index<keys['length'];index=index+1){
+            var div = document.createElement('div')
+            main.appendChild(div)
+            div.className='row'
 
-</script>
+            var row=keys[index]
+            console.log(keys[index])
+            for (var index2=0;index2<row['length'];index2=index2+1){
+                var kbd=document.createElement('kbd')
+                kbd.className='key'
+                div.appendChild(kbd)
+                var span =document.createElement('span')
+                span.textContent=row[index2]
+                span.className='text'
+                kbd.appendChild(span)
+
+                var button=document.createElement('button')
+                button.id=row[index2]
+                //点击button按钮
+                button.onclick=function(click){
+                    var button2=click['target']
+                    console.log(click['target'])
+                    var img2=button2.previousSibling
+                    var key=button2['id']
+                    var x=prompt('给我一个网址')
+                    hash[key] = x  // hash 变更
+                    img2.src = 'http://'+x + '/favicon.ico'
+                    img2.onerror = function(xxx){
+                        xxx.target.src = './ico.png'
+                    }
+                    localStorage.setItem('zzz', JSON.stringify(hash))
+                }
+                button.textContent='编辑'
+                kbd.appendChild(button)
+
+                var img=document.createElement('img')
+                if(hash[row[index2]]){
+                    img.src = 'http://'+ hash[row[index2]] + '/favicon.ico'
+                }else{
+                    img.src = './ico.png'
+                }
+                img.onerror = function(xxx){
+                    xxx.target.src = './ico.png'
+                }
+                kbd.appendChild(img)
+            }
+        }
+
+
+        //3、监听用户动作
+        document.onkeypress=function (press) {
+            var key = press['key']
+            var website =hash[key]
+            window.open('http://'+website, '_blank')
+
+        }
+
+
+        //工具函数
+
+    </script>
 </body>
 </html>
