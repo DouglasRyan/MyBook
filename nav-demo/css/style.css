@@ -2,7 +2,7 @@
 	margin:0;
 	padding: 0;
 }
-body{background: grey url(../wall.jpg) no-repeat center center; }
+/* body{background: grey url(../wall.jpg) no-repeat center center; } */
 main{
 	text-align: center;
 	display: flex;      /*将对象作为弹性伸缩盒显示*/
@@ -35,7 +35,7 @@ kbd>button{
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	/*display: none;*/
+	display: none;
 
 }
 
