@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>carousel-2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        
+
+        .windows {
+
+            width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            overflow: hidden;
+
+        }
+
+        .imgWrapper {
+            display: flex;
+        }
+
+        #slides {
+            transition: all 1s;
+        }
+
+        .imgWrapper>img {
+            width: 100%;
+            transition: all 1s;
+        }
+
+        #controls,
+        #buttonWrapper {
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+
+
+
+        .btnWrapper {
+            width: 300px;
+            display: flex;
+            margin: 20px auto;
+            justify-content: center;
+
+        }
+
+        .btnWrapper button {
+
+            border-radius: 1px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="windows">
+            <div id="slides" class="imgWrapper">
+                <img src="./img/1.png" alt="图片" width="300" height="200">
+                <img src="./img/2.png" alt="图片" width="300" height="200">
+                <img src="./img/3.png" alt="图片" width="300" height="200">
+                <img src="./img/4.png" alt="图片" width="300" height="200">
+            </div>
+        </div>
+        <div id="controls">
+            <button id="previous">上一张</button>
+            <button id="next">下一张</button>
+        </div>
+
+        <div id="buttonWrapper" class="buttons">
+            <button>第1张</button>
+            <button>第2张</button>
+            <button>第3张</button>
+            <button>第4张</button>
+        </div>
+    </div>
+    </div>
+
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

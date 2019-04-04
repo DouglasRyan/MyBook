@@ -1,0 +1,30 @@
+/*flex布局，图片横向摆放*/
+
+.images {
+    display: flex;
+    align-items: flex-start;
+    transition: all 0.5s;
+}
+
+.images>img {
+    vertical-align: top;
+}
+
+.window {
+    margin: 20px auto;
+    width: 300px;
+    overflow: hidden;
+}
+
+/* 高亮 */
+.red{
+    color:yellow;
+    fill: red;
+    background:red;
+}
+
+.buttons{
+}
+.wrapper{
+    text-align: center;
+}

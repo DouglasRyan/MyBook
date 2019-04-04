@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+*{
+    box-sizing: border-box;
+}
+
+.windows{
+    
+    width: 300px;
+    height:200px;
+    margin: 20px auto;
+    overflow: hidden;
+
+}
+.imgWrapper{
+    display: flex;
+}
+
+#slides{
+    transition: all 1s;
+}
+.imgWrapper>img{
+    width: 100%;
+    transition: all 1s;
+}
+#controls,
+#buttonWrapper{
+    text-align: center;
+    padding: 10px 20px;
+}
+
+
+
+
+.btnWrapper{
+    width:300px;
+    display: flex;
+    margin: 20px auto;
+    justify-content: center;
+
+}
+.btnWrapper button{
+
+    border-radius: 1px;
+}
