@@ -2,7 +2,9 @@
 	margin:0;
 	padding: 0;
 }
-body{background: grey url(../wall.jpg) no-repeat center center; } 
+
+/* grey url() no-repeat center center;  */
+body{background: white} 
 main{
 	text-align: center;
 	display: flex;      /*将对象作为弹性伸缩盒显示*/
