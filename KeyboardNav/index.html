@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>键盘导航</title>
+    <link rel="stylesheet" href="default.css">
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <div id="main" class="wrapper">
+
+        </div>
+    </main>
+    <footer></footer>
+    <script>
+        //添加kbd标签
+        let keys = {
+            '0': {
+                0: 'q',
+                1: 'w',
+                2: 'e',
+                3: 'r',
+                4: 't',
+                5: 'y',
+                6: 'u',
+                7: 'i',
+                8: 'o',
+                9: 'p',
+                length: 10
+            },
+            '1': {
+                0: 'a',
+                1: 's',
+                2: 'd',
+                3: 'f',
+                4: 'g',
+                5: 'h',
+                6: 'j',
+                7: 'k',
+                8: 'l',
+                length: 9
+            },
+            '2': {
+                0: 'z',
+                1: 'x',
+                2: 'c',
+                3: 'v',
+                4: 'b',
+                5: 'n',
+                6: 'm',
+                length: 7
+            },
+            'length': 3
+        }
+        let hash = {
+            'q': 'qq.com',
+            'w': 'weibo.com',
+            'e': 'ele.me',
+            'r': 'renren.com',
+            't': 'tianya.com',
+            'y': 'youtube.com',
+            'u': 'uc.com',
+            'i': 'iqiyi.com',
+            'o': 'opera.com',
+            'p': undefined,
+            'a': 'acfun.tv',
+            's': 'sohu.com',
+            'z': 'zhihu.com',
+            'm': 'www.mcdonalds.com.cn'
+        }
+
+        let localStorageHash = JSON.parse(localStorage.getItem('localWebsite' || 'null'))
+        if (localStorageHash) {
+            hash = localStorageHash
+        }
+        let index1 = 0
+        while (index1 < keys.length) {
+            let div1 = document.createElement('div')
+            let rows = keys[index1]
+            let index2 = 0
+            while (index2 < rows.length) {
+                let kbd1 = document.createElement('kbd')
+                kbd1.textContent = rows[index2]
+                let btn = document.createElement('button')
+                btn.textContent = '编辑'
+                btn.id = rows[index2]
+                btn.onclick = function(x) {
+                    let key = x.target.id
+                    let y = prompt('给我一个网址')
+                    hash[key] = y //hash 变更
+                    localStorage.setItem('localWebsite', JSON.stringify(hash))
+                }
+                kbd1.appendChild(btn)
+                div1.appendChild(kbd1)
+                index2 += 1
+            }
+            main.appendChild(div1)
+            index1 += 1
+        }
+
+        //监听键盘事件
+        document.onkeypress = function(x) {
+            let key = x['key']
+            let website = hash[key]
+                //location.href = 'http://' + website   当前窗口打开
+            window.open('http://' + website, '_blank')
+        }
+    </script>
+    <script src=""></script>
+</body>
+
+</html>
